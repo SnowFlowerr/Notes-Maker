@@ -61,8 +61,14 @@ export default function Navbar({ note, setNote, arrNotes, setArrNotes }) {
     }
     function handleUpdate(e){
         e.preventDefault()
-        arrNotes[update.index]=note;
-        setNote({title:"",text:""})
+        if(note.title!==""){
+            arrNotes[update.index]=note;
+            setNote({title:"",text:""})
+            setUpdate({state:false,index:update.index})
+        }
+        else{
+            alert("Enter the Title")
+        }
     }
     return (
             <div>
