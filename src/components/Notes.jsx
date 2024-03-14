@@ -148,6 +148,7 @@ export default function Notes({ note, setNote }) {
             WinPrint.print();
             WinPrint.close();
         }
+        setPrint(true);
     }
 
     return (

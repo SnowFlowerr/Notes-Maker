@@ -29,17 +29,16 @@ export default function Navbar({ note, setNote, arrNotes, setArrNotes }) {
     return (
         <div className={styles.Navbox}>
             <div className={styles.addNotes}>Add Notes <button className={styles.addNotesBtn} onClick={handleaddInput}> +</button>
-                <hr />
-            </div>
+                {/* <hr /> */}
             {add && (
                 <div className={styles.inputBox}>
                     <form >
                         <input type="text" placeholder=' Enter The Title' onChange={handleChange} value={note.title} id='title' />
-                        <button onClick={handleClick}>Save</button>
+                        <button onClick={handleClick}><i class="fa-solid fa-floppy-disk"></i></button>
                     </form>
-                    <hr />
                 </div>
             )}
+            </div>
             <div className={styles.titlesBox}>
             {arrNotes.map((element,index) => <div><button onClick={()=>handleDisplay(index)} className={styles.titleBtn}>{element.title}</button> <button className={styles.deleteBtn} onClick={()=>handleDelete(index)}><i class="fa-solid fa-trash"></i></button></div>)}
             </div>

@@ -25,20 +25,24 @@
     font-size: 35px;
     font-weight: 800;
     position: fixed;
-    height: 8.1%;
+    /* height: 7%; */
     /* margin-left: 2%; */
-    /* border: 2px solid black; */
+    border: 2px solid black;
     background-color: white;
     border-radius: 10px;
-    width: 20vw;
+    width: 19vw;
+    margin-left: 0.35vw;
+    margin-top: 0.35vw;
+    padding-bottom: 0.3vw;
 }
 .inputBox{
     /* border: 2px solid black; */
-    width: 70vw;
-    left: 26vw;
-    top: 7vh;
-    padding-top: 01vw;
-    position: fixed;
+    width: 19vw;
+     /* left: 26vw; */
+    /* top: 15vh; */
+    /* margin-left: 0.35vw; */
+
+    /* position: fixed; */
     text-align: center;
     background-color: white;
     border-radius: 20px;
@@ -46,15 +50,15 @@
 .inputBox input{
     width: 75%;
     border-radius: 10px;
-    font-size: 30px;
+    font-size: 20px;
     margin-right: 1%;
     margin-bottom: 0.3vw;
     /* margin-bottom: 10px; */
 }
 .inputBox button{
-    width: 21%;
+    width: 15%;
     border-radius: 10px;
-    font-size: 30px;
+    font-size: 20px;
 }
 .titleBtn{
     width: 83%;
