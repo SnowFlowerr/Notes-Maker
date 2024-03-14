@@ -139,7 +139,6 @@ export default function Notes({ note, setNote }) {
         e.preventDefault();
         setPrint(!print)
         if (print) {
-            // window.print();
             var printTextArea = document.getElementById("text");
             var WinPrint = window.open('left=0,top=0,width=800,height=900,');
             WinPrint.document.write(printTextArea.innerHTML);
