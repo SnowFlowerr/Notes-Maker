@@ -1,16 +1,19 @@
 import React, { useState } from 'react'
 import styles from "./Notes.module.css"
+import { ColorPicker } from 'primereact/colorpicker';
 
 export default function Notes({ note, setNote }) {
+    const [color1, setColor1] = useState(false);
     const [bold, setBold] = useState(false);
     const [italic, setItalic] = useState(false);
     const [underline, setUnderline] = useState(false);
-    const [color, setColor] = useState(false);
+    const [color, setColor] = useState("black");
     const [left, setLeft] = useState(false);
     const [right, setRight] = useState(false);
     const [justify, setJustify] = useState(false);
     const [center, setCenter] = useState(false);
     const [print, setPrint] = useState(false);
+    
 
     function handleChange(e) {
         e.preventDefault();
@@ -59,12 +62,12 @@ export default function Notes({ note, setNote }) {
     }
     function handleColor(e) {
         e.preventDefault();
-        setColor(!color)
-        if (color) {
-            // document.getElementById("text").style.fontWeight="bold";
+        setColor1(!color1)
+        if (color1) {
+            document.getElementById("color").style.backgroundColor="white"
         }
         else {
-            // document.getElementById("text").style.fontWeight="normal";
+            document.getElementById("color").style.backgroundColor="lightgreen";
         }
     }
     function handleLeft(e) {
@@ -149,6 +152,10 @@ export default function Notes({ note, setNote }) {
         }
         setPrint(true);
     }
+    function handleColorChange(e){
+        setColor(e.target.value)
+        document.getElementById("text").style.color=`#${color}`;
+    }
 
     return (
         <div className={styles.Notesbox}>
@@ -159,13 +166,18 @@ export default function Notes({ note, setNote }) {
                 <button className={styles.btn} onClick={handleBold} id="bold"><i class="fa-solid fa-bold"></i></button>
                 <button className={styles.btn} onClick={handleItalic} id="italic"><i class="fa-solid fa-italic"></i></button>
                 <button className={styles.btn} onClick={handleUnderline} id="underline"><i class="fa-solid fa-underline"></i></button>
-                <button className={styles.btn} onClick={handleColor}><i class="fa-solid fa-palette" id="color"></i></button>
+                <button className={styles.btn} onClick={handleColor} id="color"><i class="fa-solid fa-palette" ></i></button>
                 <button className={styles.btn} onClick={handleLeft} id="left"><i class="fa-solid fa-align-left"></i></button>
                 <button className={styles.btn} onClick={handleRight} id="right"><i class="fa-solid fa-align-right"></i></button>
                 <button className={styles.btn} onClick={handleJustify} id="justify"><i class="fa-solid fa-align-justify" ></i></button>
                 <button className={styles.btn} onClick={handleCenter} id="center"><i class="fa-solid fa-align-center"></i></button>
                 <button className={styles.btn} onClick={handlePrint} id="print"><i class="fa-solid fa-print"></i></button>
             </div>
+            {color1 &&(
+                <div className={styles.colorPopup}>
+                <ColorPicker value={color} onChange={handleColorChange} inline />
+            </div>
+                )}
             <textarea type="text" onChange={handleChange} id='text' value={note.text} className={styles.inputNotes} placeholder='Write Your Notes Here' />
         </div>
     )
