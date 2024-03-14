@@ -34,7 +34,7 @@
     text-align: center;
     font-size: 32px;
     font-weight: 800;
-    position: fixed;
+    /* position: fixed; */
     /* height: 7%; */
     /* margin-left: 2%; */
     border: 2px solid black;
@@ -78,8 +78,16 @@
     font-size: 20px;
 }
 .titlesBox{
-    margin-top: 28%;
+    margin-top: 2%;
 }
 .deleteBtn{
     font-size: 20px;
+}
+
+.updateBtn{
+    position: fixed;
+    right: 5.5vw;
+    top: 9vh;
+    font-size: 30px;
+    border-radius: 10px;
 }
