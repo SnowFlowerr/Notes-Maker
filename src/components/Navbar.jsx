@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import styles from "./Navbar.module.css"
 
 export default function Navbar({ note, setNote, arrNotes, setArrNotes }) {
-    const [add, setAdd] = useState(false);
+    const [add, setAdd] = useState(true);
     const [search, setSearch] = useState(false);
     const [searchInp, setSearchInp] = useState("");
     const [searchArr, setSearchArr] = useState([]);
@@ -10,7 +10,7 @@ export default function Navbar({ note, setNote, arrNotes, setArrNotes }) {
 
     function handleaddInput(e) {
         e.preventDefault();
-        setAdd(!add)
+        setAdd(true)
         setSearch(false);
     }
     function handleChange(e) {
@@ -23,7 +23,7 @@ export default function Navbar({ note, setNote, arrNotes, setArrNotes }) {
             setArrNotes([...arrNotes, note])
             setNote({title:"",text:""})
         }
-        setAdd(false);
+        // setAdd(false);
         setUpdate({state:false,index:update.index})
     }
     function handleDelete(index){
@@ -50,7 +50,7 @@ export default function Navbar({ note, setNote, arrNotes, setArrNotes }) {
     }
     function handleSearchInput(e){
         e.preventDefault()
-        setSearch(!search);
+        setSearch(true);
         setAdd(false)
     }
     function handleCancel(e){
