@@ -46,7 +46,7 @@ export default function Navbar({ note, setNote, arrNotes, setArrNotes }) {
             setArrNotes(arrNotes.filter((ele)=>ele.title.includes(searchInp)))
         }
         setSearchInp("")
-        setSearch(false);
+        // setSearch(false);
     }
     function handleSearchInput(e){
         e.preventDefault()
@@ -57,7 +57,7 @@ export default function Navbar({ note, setNote, arrNotes, setArrNotes }) {
         e.preventDefault()
         setArrNotes(searchArr);
         setSearchInp("")
-        setSearch(false);
+        // setSearch(false);
     }
     function handleUpdate(e){
         e.preventDefault()
