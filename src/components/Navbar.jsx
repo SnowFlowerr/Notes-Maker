@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
 import styles from "./Navbar.module.css"
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function Navbar({ note, setNote, arrNotes, setArrNotes }) {
     const [add, setAdd] = useState(true);
@@ -7,11 +9,34 @@ export default function Navbar({ note, setNote, arrNotes, setArrNotes }) {
     const [searchInp, setSearchInp] = useState("");
     const [searchArr, setSearchArr] = useState([]);
     const [update, setUpdate] = useState({state:false,index:-1});
+    const success = (message) => {
+        toast.success(message, {
+        position: "top-center",
+        autoClose: 1000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        });
+    };
+    const warning = (message) => {
+        toast.warning(message, {
+        position: "top-center",
+        autoClose: 1000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        });
+    };
 
     function handleaddInput(e) {
         e.preventDefault();
         setAdd(true)
         setSearch(false);
+        handleCancel(e)
     }
     function handleChange(e) {
         e.preventDefault();
@@ -20,20 +45,32 @@ export default function Navbar({ note, setNote, arrNotes, setArrNotes }) {
     function handleClick(e) {
         e.preventDefault();
         if(note.title!==""){
-            setArrNotes([...arrNotes, note])
+            setArrNotes([ note,...arrNotes])
             setNote({title:"",text:""})
+            allWhite()
+            setUpdate({state:false,index:update.index})
+        }
+        else{
+            warning("Enter the Title")
         }
         // setAdd(false);
-        setUpdate({state:false,index:update.index})
     }
     function handleDelete(index){
         setArrNotes(arrNotes.filter((ele,ind)=>ind!==index))
         setNote({title:"",text:""})
-        
+        setUpdate({state:false,index:update.index})
+        allWhite()
     }
     function handleDisplay(index){
         setNote(arrNotes[index])
         setUpdate({state:true,index:[index]})
+        allWhite()
+        document.getElementById(`${index}`).style.backgroundColor="lightgreen";
+    }
+    function allWhite(){
+        for(let i=0;i<arrNotes.length;i++){
+            document.getElementById(`${i}`).style.backgroundColor="white";
+        }
     }
     function handleSearchChange(e){
         e.preventDefault()
@@ -45,7 +82,7 @@ export default function Navbar({ note, setNote, arrNotes, setArrNotes }) {
             setSearchArr(arrNotes)
             setArrNotes(arrNotes.filter((ele)=>ele.title.includes(searchInp)))
         }
-        setSearchInp("")
+        // setSearchInp("")
         // setSearch(false);
     }
     function handleSearchInput(e){
@@ -55,7 +92,9 @@ export default function Navbar({ note, setNote, arrNotes, setArrNotes }) {
     }
     function handleCancel(e){
         e.preventDefault()
-        setArrNotes(searchArr);
+        if(searchInp!==""){
+            setArrNotes(searchArr);
+        }
         setSearchInp("")
         // setSearch(false);
     }
@@ -63,15 +102,37 @@ export default function Navbar({ note, setNote, arrNotes, setArrNotes }) {
         e.preventDefault()
         if(note.title!==""){
             arrNotes[update.index]=note;
-            setNote({title:"",text:""})
-            setUpdate({state:false,index:update.index})
+            success("Note's Updated")
+            // setNote({title:"",text:""})
+            // setUpdate({state:false,index:update.index})
         }
         else{
-            alert("Enter the Title")
+            warning("Enter the Title")
         }
+        // setArrNotes(arrNotes)
+    }
+    function handleClose(e){
+        e.preventDefault()
+        setNote({title:"",text:""})
+        setUpdate({state:false,index:update.index})
+        allWhite()
     }
     return (
-            <div>
+        
+        <div>
+        <div>
+        <ToastContainer
+position="top-center"
+autoClose={1000}
+hideProgressBar={false}
+newestOnTop={false}
+closeOnClick
+rtl={false}
+pauseOnFocusLoss
+draggable
+pauseOnHover
+/>
+      </div>
         <div className={styles.Navbox}>
             <div className={styles.addNotes}>Add Notes <button className={styles.addNotesBtn} onClick={handleaddInput}><i class="fa-solid fa-plus"></i></button><button className={styles.searchBtn} onClick={handleSearchInput}><i class="fa-solid fa-magnifying-glass"></i></button>
             {add && (
@@ -92,17 +153,16 @@ export default function Navbar({ note, setNote, arrNotes, setArrNotes }) {
                 </div>
             )}
             </div>
+            <div className={styles.space}></div>
             <div className={styles.titlesBox}>
-            {arrNotes.map((element,index) => <div><button onClick={()=>handleDisplay(index)} className={styles.titleBtn}>{element.title}</button> <button className={styles.deleteBtn} onClick={()=>handleDelete(index)}><i class="fa-solid fa-trash"></i></button></div>)}
+            {arrNotes.map((element,index) => <div><button onClick={()=>handleDisplay(index)} className={styles.titleBtn} id={`${index}`}>{element.title}</button> <button className={styles.deleteBtn} onClick={()=>handleDelete(index)}><i class="fa-solid fa-trash"></i></button></div>)}
             </div>
             </div>
-            {update.state &&(<div>
+            {update.state &&(
+            <div className={styles.updateClose}>
                 <button className={styles.updateBtn} onClick={handleUpdate}>Update</button>
-                
+                <button className={styles.closeBtn} onClick={handleClose}>Close</button>
             </div>)}
-            {/* <div className={styles.titlesBox}>
-            {arrNotes.map((element,index) => <div><button onClick={()=>handleDisplay(index)} className={styles.titleBtn}>{element.title}</button> <button className={styles.deleteBtn} onClick={()=>handleDelete(index)}><i class="fa-solid fa-trash"></i></button></div>)}
-            </div> */}
         </div>
     )
 }
