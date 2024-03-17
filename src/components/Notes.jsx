@@ -77,9 +77,9 @@ export default function Notes({ note, setNote }) {
             document.getElementById("center").style.backgroundColor = "white"
             document.getElementById("justify").style.backgroundColor = "white"
         }
-        else {
-            document.getElementById("left").style.backgroundColor = "white"
-        }
+        // else {
+        //     document.getElementById("left").style.backgroundColor = "white"
+        // }
     }
     function handleRight(e) {
         e.preventDefault();
@@ -96,6 +96,7 @@ export default function Notes({ note, setNote }) {
         }
         else {
             document.getElementById("right").style.backgroundColor = "white"
+            handleLeft(e)
         }
     }
     function handleJustify(e) {
@@ -113,6 +114,7 @@ export default function Notes({ note, setNote }) {
         }
         else {
             document.getElementById("justify").style.backgroundColor = "white"
+            handleLeft(e)
         }
     }
     function handleCenter(e) {
@@ -130,6 +132,7 @@ export default function Notes({ note, setNote }) {
         }
         else {
             document.getElementById("center").style.backgroundColor = "white"
+            handleLeft(e)
         }
     }
     function handlePrint(e) {
@@ -162,7 +165,7 @@ export default function Notes({ note, setNote }) {
                 <button className={styles.btn} onClick={handleItalic} id="italic"><i class="fa-solid fa-italic"></i></button>
                 <button className={styles.btn} onClick={handleUnderline} id="underline"><i class="fa-solid fa-underline"></i></button>
                 <button className={styles.btn} onClick={handleColor} id="color"><i class="fa-solid fa-palette" ></i></button>
-                <button className={styles.btn} onClick={handleLeft} id="left"><i class="fa-solid fa-align-left"></i></button>
+                <button className={styles.btnleft} onClick={handleLeft} id="left"><i class="fa-solid fa-align-left"></i></button>
                 <button className={styles.btn} onClick={handleRight} id="right"><i class="fa-solid fa-align-right"></i></button>
                 <button className={styles.btn} onClick={handleJustify} id="justify"><i class="fa-solid fa-align-justify" ></i></button>
                 <button className={styles.btn} onClick={handleCenter} id="center"><i class="fa-solid fa-align-center"></i></button>
