@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import styles from "./Notes.module.css"
 import { ColorPicker } from 'primereact/colorpicker';
 
@@ -13,10 +13,10 @@ export default function Notes({ note, setNote }) {
     const [justify, setJustify] = useState(false);
     const [center, setCenter] = useState(false);
     const [print, setPrint] = useState(false);
-    
+
     function handleChange(e) {
         e.preventDefault();
-            setNote({ ...note, [e.target.id]: e.target.value })
+        setNote({ ...note, [e.target.id]: e.target.value })
     }
     function handleBold(e) {
         e.preventDefault();
@@ -77,9 +77,6 @@ export default function Notes({ note, setNote }) {
             document.getElementById("center").style.backgroundColor = "white"
             document.getElementById("justify").style.backgroundColor = "white"
         }
-        // else {
-        //     document.getElementById("left").style.backgroundColor = "white"
-        // }
     }
     function handleRight(e) {
         e.preventDefault();
@@ -147,17 +144,18 @@ export default function Notes({ note, setNote }) {
             WinPrint.print();
             WinPrint.close();
         }
-        setPrint(true);
+        setPrint(false);
     }
     function handleColorChange(e) {
         setColor(e.target.value)
-        document.getElementById("text").style.color = `#${color}`;
     }
-    
+    useEffect(() => {
+        document.getElementById("text").style.color = `#${color}`;
+    });
+
     return (
         <div className={styles.Notesbox}>
             <div className={styles.notesName}>
-                
                 <label htmlFor="title"><u>{note.title === "" ? "Title" : note.title}</u></label>
             </div>
             <div className={styles.funBtn}>
