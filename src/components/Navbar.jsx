@@ -105,7 +105,7 @@ export default function Navbar({ note, setNote, arrNotes, setArrNotes }) {
             setArrNotes(searchArr);
         }
         // setSearch(false);
-        setSearchInp({text:"",count:searchInp.count})
+        setSearchInp({text:"",count:true})
     }
     function handleUpdate(e) {
         e.preventDefault()

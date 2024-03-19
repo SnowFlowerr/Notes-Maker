@@ -10,6 +10,7 @@ export default function Home() {
     return (
         <div className={styles.BigBox}>
             <Navbar note={note} setNote={setNote} arrNotes={arrNotes} setArrNotes={setArrNotes}></Navbar>
+            <button className={styles.darkButton}><i class="fa-solid fa-circle-half-stroke"></i></button>
             <Notes note={note} setNote={setNote}></Notes>
         </div>
     )
