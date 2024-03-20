@@ -152,7 +152,7 @@ export default function Notes({ note, setNote }) {
     });
 
     return (
-        <div className={styles.Notesbox}>
+        <div className={styles.Notesbox} id='noteBox'>
             <div className={styles.notesName}>
                 <label htmlFor="title"><u>{note.title === "" ? "Title" : note.title}</u></label>
             </div>

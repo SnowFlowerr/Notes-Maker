@@ -11,4 +11,9 @@
     z-index: 0;
     height: 86.1vh;
     margin-top: 3vh;
+    border: none;
+    font-size: large;
+    background-color: black;
+    color: white;
+    /* box-shadow: 0px 0px 10px black; */
 }

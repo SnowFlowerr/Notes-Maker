@@ -141,8 +141,8 @@ export default function Navbar({ note, setNote, arrNotes, setArrNotes }) {
                     pauseOnHover
                 />
             </div>
-            <div className={styles.Navbox}>
-                <div className={styles.addNotes}>Add Notes <button className={styles.addNotesBtn} onClick={handleaddInput}><i class="fa-solid fa-plus"></i></button><button className={styles.searchBtn} onClick={handleSearchInput}><i class="fa-solid fa-magnifying-glass"></i></button>
+            <div className={styles.Navbox} id='nav'>
+                <div className={styles.addNotes} id='addBox'>Add Notes <button className={styles.addNotesBtn} onClick={handleaddInput}><i class="fa-solid fa-plus"></i></button><button className={styles.searchBtn} onClick={handleSearchInput}><i class="fa-solid fa-magnifying-glass"></i></button>
                     {add && (
                         <div className={styles.inputBox}>
                             <form >
@@ -161,7 +161,7 @@ export default function Navbar({ note, setNote, arrNotes, setArrNotes }) {
                         </div>
                     )}
                 </div>
-                <div className={styles.space}></div>
+                <div className={styles.space} id='space'></div>
                 <div className={styles.titlesBox}>
                     {arrNotes.map((element, index) => <div><button onClick={() => handleDisplay(index)} className={styles.titleBtn} id={`${index}`}>{element.title}</button> <button className={styles.deleteBtn} onClick={() => handleDelete(index)}><i class="fa-solid fa-trash"></i></button></div>)}
                 </div>
