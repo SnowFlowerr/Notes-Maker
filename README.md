@@ -24,7 +24,7 @@ To get a local copy up and running, follow these simple steps:
 
 **Open your browser and go to** http://localhost:3000 **to view the app.**
 
-##Usage
+## Usage
 To create a new note, click on the "+" button and fill in the title and content fields.
 To edit an existing note, click on the note you wish to edit and make changes in the input fields.
 To delete a note, click on the trash icon next to the note.
