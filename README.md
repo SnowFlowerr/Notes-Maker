@@ -16,10 +16,18 @@ Note Maker is a simple web application built with React that allows users to cre
 
 To get a local copy up and running, follow these simple steps:
 
-1. **Clone the repository** : git clone https://github.com/SnowFlowerr/Notes-Maker.git 
-2. **Navigate to the project directory** : cd note-maker
-3. **Install dependencies** : npm install
-4. **Start the development server** : npm start
+1. **Clone the repository** :
+   ```sh
+   git clone https://github.com/SnowFlowerr/Notes-Maker.git 
+2. **Navigate to the project directory** :
+   ```sh
+   cd Note-Maker
+3. **Install dependencies** :
+   ```sh
+   npm install
+4. **Start the development server** :
+   ```sh
+   npm start
 
 **Open your browser and go to** http://localhost:3000 **to view the app.**
 
