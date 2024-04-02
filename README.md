@@ -25,15 +25,12 @@ To get a local copy up and running, follow these simple steps:
 
 ## Usage
 To create a new note, click on the "+" button and fill in the title and content fields. \
-To edit an existing note, click on the note you wish to edit and make changes in the input fields.
-To delete a note, click on the trash icon next to the note.
-Your notes will be automatically saved to local storage.
-Built With
-React - JavaScript library for building user interfaces
-CSS - For styling the components
-Local Storage API - For persisting data locally
-Contributing
-Contributions are what make the open-source community such an amazing place to learn, inspire, and create. Any contributions you make are greatly appreciated.
+To edit an existing note, click on the note you wish to edit and make changes in the input fields. \
+To delete a note, click on the trash icon next to the note. \
+Your notes will be automatically saved to local storage. \
+## Built With
+React - JavaScript library for building user interfaces \
+CSS - For styling the components \
 
 ## Fork the Project
 Create your Feature Branch (git checkout -b feature/AmazingFeature)
